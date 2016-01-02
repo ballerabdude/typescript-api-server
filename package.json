@@ -1,0 +1,20 @@
+{
+  "name": "typescript-api-server",
+  "version": "1.0.0",
+  "description": "An API written in TypeScript",
+  "main": "app/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdul Hagi",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-typescript": "^2.10.0"
+  },
+  "dependencies": {
+    "hapi": "^11.1.4",
+    "joi": "^7.1.0"
+  }
+}
