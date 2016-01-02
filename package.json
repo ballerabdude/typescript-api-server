@@ -11,6 +11,7 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-nodemon": "^2.0.6",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.10.0"
   },
   "dependencies": {

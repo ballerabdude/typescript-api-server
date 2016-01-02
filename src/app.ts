@@ -5,15 +5,21 @@
 import Hapi = require('hapi');
 import Joi = require('joi');
 import {ApplicationConfig, IAppConfig} from './config/application'
+import Routes from './routes';
 
 interface IApi {
   config: IAppConfig;
   server: Hapi.Server;
+  startApi(): void;
+  initRoutes(): void;
+  routeManager: Routes;
 }
 class MyApi implements IApi {
 
   config: IAppConfig;
   server: Hapi.Server;
+
+  routeManager: Routes;
 
   constructor() {
 
@@ -32,6 +38,9 @@ class MyApi implements IApi {
 
     this.server.connection({port: this.config.port, host: '0.0.0.0', routes: {cors: true}});
 
+    this. routeManager = new Routes(this.server)
+    this.initRoutes()
+
     this.server.start( () =>  {
       let dashChars = '+' + new Array(32 + this.server.info.uri.length + this.server.app.name.length).join('-') + '+';
       console.log(dashChars);
@@ -39,6 +48,10 @@ class MyApi implements IApi {
       console.log(dashChars);
 
     });
+  }
+
+  initRoutes() {
+    this.routeManager.initRoutes();
   }
 }
 
