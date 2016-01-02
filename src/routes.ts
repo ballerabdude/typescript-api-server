@@ -5,28 +5,6 @@ import Hapi = require('hapi');
 import NameRoute from './routes/nameRoute';
 
 
-export interface IBaseRoute {
-  initRoute(): void;
-  server: Hapi.Server;
-  routes: Hapi.IRouteConfiguration[];
-}
-export class BaseRoute implements IBaseRoute {
-
-  server: Hapi.Server;
-  routes: Hapi.IRouteConfiguration[];
-
-  constructor(server: Hapi.Server, routes: Hapi.IRouteConfiguration[]) {
-    this.server = server;
-    this.routes = routes;
-  }
-
-  initRoute() {
-    for (let route in this.routes) {
-      this.server.route(route);
-    }
-  }
-
-}
 
 
 interface IRoutes {
@@ -44,7 +22,7 @@ export default class Routes implements IRoutes {
   }
 
   initRoutes() {
-    new NameRoute(this.server);
+    var nameRoute = new NameRoute(this.server);
   }
 
 }
